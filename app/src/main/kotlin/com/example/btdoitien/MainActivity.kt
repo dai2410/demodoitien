@@ -59,24 +59,24 @@ class MainActivity : AppCompatActivity() {
         val amountText = binding.edtAmount.text.toString()
         if (amountText.isEmpty()) {
             // Nên cập nhật cả khi trống để rõ ràng
-            binding.tvResult.text = "Kết quả: " // Hoặc "Kết quả: 0" tùy ý
+            binding.tvResult.text = "Kết quả: "
             return
         }
 
-        // Sử dụng 0.0 nếu không parse được thay vì return sớm
+
         val amount = amountText.toDoubleOrNull() ?: 0.0
         val fromCurrency = binding.spinnerFrom.selectedItem.toString()
         val toCurrency = binding.spinnerTo.selectedItem.toString()
 
-        // Lấy tỷ giá an toàn hơn, nếu không tìm thấy thì mặc định là 1.0
+
         val fromRate = exchangeRates[fromCurrency] ?: 1.0
         val toRate = exchangeRates[toCurrency] ?: 1.0
 
-        // Kiểm tra chia cho 0 nếu fromRate có thể là 0 (dù trong map hiện tại không có)
+        
         val convertedAmount = if (fromRate != 0.0) {
             amount * (toRate / fromRate)
         } else {
-            0.0 // Hoặc xử lý lỗi khác
+            0.0
         }
         binding.tvResult.text = "Kết quả: %.2f %s".format(convertedAmount, toCurrency)
     }
