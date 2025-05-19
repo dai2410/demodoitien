@@ -1,1 +1,1 @@
-sửa dụng để đổi trị giá giữa các loại tiền
+sử dụng để đổi trị giá giữa các loại tiền
